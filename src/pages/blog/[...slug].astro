@@ -40,9 +40,11 @@ const category = categories.find(
   ogimage={post.data.image}>
   <Container>
     <div class="max-w-screen-md mx-auto">
-      <div class="text-center">
-        <Label theme={category.color}>{category.title}</Label>
-      </div>
+      {category && (
+        <div class="text-center">
+          <Label theme={category.color}>{category.title}</Label>
+        </div>
+      )}
 
       <h1
         class="mt-2 mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
@@ -53,7 +55,7 @@ const category = categories.find(
         <div class="flex items-center gap-3">
           <div class="relative flex-shrink-0">
             {
-              author.image && (
+              author?.image && (
                 <Image
                   src={author.image}
                   alt="Author Photo"
@@ -68,7 +70,7 @@ const category = categories.find(
 
           <div>
             <p class="text-gray-800 dark:text-gray-400">
-              {author.name}
+              {author?.name || "Tác giả"}
             </p>
             <div class="flex items-center space-x-2 text-sm">
               <time
@@ -76,10 +78,6 @@ const category = categories.find(
                 datetime={post.data.publishDate}>
                 {getFormattedDate(post.data.publishDate)}
               </time>
-              <!-- <span>
-                · {Math.round(remarkPluginFrontmatter?.estReadingTime) || "5"} min
-                read
-              </span> -->
             </div>
           </div>
         </div>
@@ -96,7 +94,7 @@ const category = categories.find(
           widths={[200, 400, 800]}
           sizes="(max-width: 640px) 90vw, 480px"
           width={1024}
-          heignt={576}
+          height={576}
           alt="Thumbnail"
           loading="eager"
           class="w-full"
@@ -113,7 +111,7 @@ const category = categories.find(
 
         <div class="flex flex-wrap items-center w-full gap-3 md:w-auto">
           {
-            post.data.tags.map((tag) => (
+            post.data.tags?.map((tag) => (
               <span class="text-sm text-gray-500">#{tag}</span>
             ))
           }
