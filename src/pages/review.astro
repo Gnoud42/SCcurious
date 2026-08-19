@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import Container from "../components/container.astro";
 import PageTitle from "../components/pagetitle.astro";
 import PostList from "../components/postlist.astro";
-import BlogCard from "@/components/blogcard.astro";
+import BlogCard from "../components/blogcard.astro";
 
 const allPosts = await getCollection("blog");
 const posts = allPosts.filter((post) => post.data.category === "review");
