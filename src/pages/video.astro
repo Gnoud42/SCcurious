@@ -1,0 +1,16 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import PageTitle from "../components/pagetitle.astro";
+import PostList from "../components/postlist.astro";
+
+const allPosts = await getCollection("blog");
+const posts = allPosts.filter((post) => post.data.category === "video");
+---
+<Layout title="Video">
+  <Container>
+    <PageTitle title="Video" />
+    <PostList posts={posts} />
+  </Container>
+</Layout>

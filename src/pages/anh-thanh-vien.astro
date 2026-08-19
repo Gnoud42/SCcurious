@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogCard from "../components/blog/BlogCard.astro";
+
+const allPosts = await getCollection("blog");
+const posts = allPosts.filter((post) => post.data.category === "anh-thanh-vien");
+---
+<BaseLayout title="Ảnh Xe Đẹp Từ Thành Viên">
+  <section class="section">
+    <div class="container">
+      <h1>Ảnh Xe Đẹp Từ Thành Viên</h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post) => <BlogCard post={post} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
