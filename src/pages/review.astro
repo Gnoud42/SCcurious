@@ -4,11 +4,12 @@ import Layout from "../layouts/Layout.astro";
 import Container from "../components/container.astro";
 import PageTitle from "../components/pagetitle.astro";
 import PostList from "../components/postlist.astro";
+import BlogCard from "@/components/blogcard.astro";
 
 const allPosts = await getCollection("blog");
 const posts = allPosts.filter((post) => post.data.category === "review");
 ---
-<BaseLayout title="Review Xe">
+<Layout title="Review Xe">
   <section class="section">
     <div class="container">
       <h1>Review Xe</h1>
@@ -17,4 +18,4 @@ const posts = allPosts.filter((post) => post.data.category === "review");
       </div>
     </div>
   </section>
-</BaseLayout>
+</Layout>
