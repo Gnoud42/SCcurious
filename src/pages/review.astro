@@ -14,7 +14,13 @@ const posts = allPosts.filter((post) => post.data.category === "review");
     <div class="container">
       <h1>Review Xe</h1>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => <BlogCard post={post} />)}
+        {posts.map((post) => <BlogCard post={posts && posts.length > 0 ? (
+  <PostList posts={posts} />
+) : (
+  <p class="text-center text-gray-500 py-10">
+    Chưa có bài viết nào trong mục này. BQT sẽ cập nhật sớm!
+  </p>
+)} />)}
       </div>
     </div>
   </section>
