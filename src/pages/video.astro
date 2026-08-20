@@ -11,12 +11,12 @@ const posts = allPosts.filter((post) => post.data.category === "video");
 <Layout title="Video">
   <Container>
     <PageTitle title="Video" />
-    <PostList posts={posts && posts.length > 0 ? (
+    posts={posts && posts.length > 0 ? (
   <PostList posts={posts} />
 ) : (
   <p class="text-center text-gray-500 py-10">
     Chưa có bài viết nào trong mục này. BQT sẽ cập nhật sớm!
   </p>
-)} />
+)}
   </Container>
 </Layout>

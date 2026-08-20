@@ -1,26 +1,24 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import Container from "../components/container.astro";
-import PageTitle from "../components/pagetitle.astro";
-import PostList from "../components/postlist.astro";
 import BlogCard from "../components/blogcard.astro";
 
 const allPosts = await getCollection("blog");
 const posts = allPosts.filter((post) => post.data.category === "chia-se-kinh-nghiem");
 ---
+
 <Layout title="Chia Sẻ Kinh Nghiệm">
   <section class="section">
     <div class="container">
-      <h1>Ảnh Xe Đẹp Từ Thành Viên</h1>
+      <h1>Chia Sẻ Kinh Nghiệm</h1>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => <BlogCard post={posts && posts.length > 0 ? (
-  <PostList posts={posts} />
-) : (
-  <p class="text-center text-gray-500 py-10">
-    Chưa có bài viết nào trong mục này. BQT sẽ cập nhật sớm!
-  </p>
-)} />)}
+        {posts && posts.length > 0 ? (
+          posts.map((post) => <BlogCard post={post} />)
+        ) : (
+          <p class="col-span-full text-center text-gray-500 py-10">
+            Chưa có bài viết nào trong mục này. BQT sẽ cập nhật sớm!
+          </p>
+        )}
       </div>
     </div>
   </section>
